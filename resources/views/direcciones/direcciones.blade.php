@@ -23,6 +23,16 @@
 					<th>Numero</th>
 					<th>C.P.</th>
 				</tr>
+@foreach($direcciones as $direccion)
+				<tr>
+					<td>{{$direccion->estado}}</td>
+					<td>{{$direccion->ciudad}}</td>
+					<td>{{$direccion->colonia}}</td>
+					<td>{{$direccion->calle}}</td>
+					<td>{{$direccion->numero}}</td>
+					<td>{{$direccion->cp}}</td>
+				</tr>
+@endforeach
 			</table>
 		</div>
 	</div>

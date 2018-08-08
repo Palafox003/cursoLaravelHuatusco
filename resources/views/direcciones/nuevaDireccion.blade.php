@@ -6,11 +6,12 @@
 
 <div class="row">
 		<div class="col">
-<form method="post" action="/usuarios">
+<form method="post" action="/usuario/direccion">
 
-	<h2>Nueva Dirección</h2>
+	<h2>Nueva Dirección de {{$usuario->nombre}} {{$usuario->paterno}} {{$usuario->materno}}</h2>
 
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<input type="hidden" name="id" value="{{$usuario->id}}">
 
 	  <div class="form-group">
 	    <label for="estado">Estado</label>
