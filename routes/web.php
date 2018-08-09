@@ -22,8 +22,13 @@ Route::get('saludar/{nombre?}',function ($nombre="Por favor inserta tu nombre.")
 });
 Route::get('saludo','ejemploController@ejemplo');
 Route::get('catalogo','ejemploController@index');
-Route::resource('productos','productosController');
+
+Route::resource('productos','productosController')->middleware('auth');
+
 Route::resource('usuarios','usersController');
 Route::resource('usuario/direccion','direccionesController');
 Route::get('usuario/{id}/direcciones','direccionesController@showDirecciones');
 Route::get('usuario/{id}/direcciones/add','direccionesController@direccionesForm');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -6,12 +6,16 @@
 	
 	<div class="row">
 		<div class="col">
-<form>
+<form method="post" action="/productos" enctype="multipart/form-data">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 	<h2>Nuevo Producto</h2>
+
 	  <div class="form-group">
 	    <label for="nombre">Nombre del producto</label>
 	    <input type="text" class="form-control" id="nombre" placeholder="Nombre del producto" name="nombre">
 	  </div>
+
 	  <div class="form-group">
 	    <label for="modelo">Modelo</label>
 	    <input type="text" class="form-control" id="modelo" placeholder="Modelo del producto" name="modelo">
@@ -21,11 +25,9 @@
 	    <label for="marca">Marca</label>
 	    <select class="form-control" id="marca" name="marca">
 	    	<option value="0">Selecciona una marca</option>
-	      <option value="1">Lenovo</option>
-	      <option value="2">HP</option>
-	      <option value="3">Asus</option>
-	      <option value="4">Dell</option>
-	      <option value="5">Mac</option>
+@foreach($marcas as $marca)
+			<option value="{{$marca->id}}">{{$marca->nombre}}</option>
+@endforeach
 	    </select>
 	  </div>
 

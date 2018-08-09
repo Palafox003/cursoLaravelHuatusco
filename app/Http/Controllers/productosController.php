@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Marca;
+use App\Producto;
 
 class productosController extends Controller
 {
@@ -14,7 +16,10 @@ class productosController extends Controller
     public function index()
     {
         //
-        return view('productos.productos');
+        $productos=Producto::all();
+      
+
+        return view('productos.productos',['productos'=>$productos]);
     }
 
     /**
@@ -25,7 +30,9 @@ class productosController extends Controller
     public function create()
     {
         //
-        return view('productos.nuevoProducto');
+        $marcas=Marca::all();
+
+        return view('productos.nuevoProducto',['marcas'=>$marcas]);
     }
 
     /**
@@ -37,6 +44,17 @@ class productosController extends Controller
     public function store(Request $request)
     {
         //
+        $path = $request->file('imagen')->store('img_productos');
+
+        Producto::create([
+            'nombre'=>$request['nombre'],
+            'modelo'=>$request['modelo'],
+            'img'=>$path,
+            'descripcion'=>$request['descripcion'],
+            'marca_id'=>$request['marca']
+        ]);
+
+        return $request;
     }
 
     /**

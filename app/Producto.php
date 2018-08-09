@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Marcas extends Model
+class Producto extends Model
 {
     //
     protected $fillable=[
-    	'nombre'
+    	'nombre','modelo','img','descripcion','marca_id'
     ];
 }
