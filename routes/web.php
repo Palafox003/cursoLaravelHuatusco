@@ -23,7 +23,7 @@ Route::get('saludar/{nombre?}',function ($nombre="Por favor inserta tu nombre.")
 Route::get('saludo','ejemploController@ejemplo');
 Route::get('catalogo','ejemploController@index');
 
-Route::resource('productos','productosController')->middleware('auth');
+Route::resource('productos','productosController')->middleware('check.admin');
 
 Route::resource('usuarios','usersController');
 Route::resource('usuario/direccion','direccionesController');
